@@ -1,13 +1,13 @@
 class sollution{
-     public int reverse(int x){
-            int rev = 0;
-            while(x != 0){
-                int pop = x % 10;
-                x /= 10;
-                if(rev > Integer.MAX_VALUE/10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;
-                if(rev < Integer.MIN_VALUE/10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0;
-                rev = rev * 10 + pop;
-            }
-            return rev;
-     }
+    public LinkNode mergeTwoLists(ListNode list1, ListNode list2){
+        if(list1 == null) return list2;
+        if(list2 == null) return list1;
+        if(list1.val < list2.val){
+            list1.next = mergeTwoLists(list1.next, list2);
+            return list1;
+        }else{
+            list2.next = mergeTwoLists(list1, list2.next);
+            return list2;
+        }
+    }
 }
